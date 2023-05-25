@@ -8,7 +8,6 @@
     * run php artisan migrate --seed 
 ## template
     * AdminLTE3 | Dashboard
-    * Calvin 101
 ## Eloquent relationships
     * One To Many 
     * Many To Many 
