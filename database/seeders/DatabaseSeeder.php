@@ -25,15 +25,15 @@ class DatabaseSeeder extends Seeder
         User::factory()->count(8)->create();
 
         // insert default user 
-        DB::table('users')->insert([
-            [
-                'name' => 'samia',
-                'email' => 'mahisamia13@gmail.com',
-                'password' => Hash::make('12345678'),
-                'role' =>   'admin',
-                'valid' => 1
-            ]
-        ]);
+        // DB::table('users')->insert([
+        //     [
+        //         'name' => 'samia',
+        //         'email' => 'mahisamia13@gmail.com',
+        //         'password' => Hash::make('12345678'),
+        //         'role' =>   'admin',
+        //         'valid' => 1
+        //     ]
+        // ]);
 
         // insert tags 
         DB::table('tags')->insert([

@@ -22,6 +22,7 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+   
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -62,7 +63,11 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+                        <a href="{{ url('/profile/'.auth()->user()->id) }}" class="d-block">
+                            
+                            <p><i class="nav-icon fas fa-cloud"></i>{{ auth()->user()->name }}   <i class="right fas fa-cloud-meatbal"></i></p>
+                            </a>
+                        
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
@@ -90,6 +95,7 @@
                                 </p>
                             </a>
                         </li>
+                       
 
                         @if (auth()->user()->isAdmin())
                             <li class="nav-item">
@@ -101,6 +107,15 @@
                                 </a>
                             </li>
                         @endif
+
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="nav-link">
+                                <i class="nav-icon fa-arrow-circle-righte"></i>
+                                <p>
+                                    Logout
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -124,10 +139,10 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright <a href="#">AdminLTE</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.1.0
+                <b>Version</b> 1.0
             </div>
         </footer>
 
@@ -164,7 +179,9 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    {{-- <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script> --}}
+    <!-- {{-- <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script> --}} -->
+    
+
     @yield('javascript')
 </body>
 

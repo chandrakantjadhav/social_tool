@@ -23,6 +23,33 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+
+    protected function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        // $this->validator($request->all())->validate();
+
+        // event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        $user->sendEmailVerificationNotification();
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+    }
+
     /**
      * Handle an incoming registration request.
      *
